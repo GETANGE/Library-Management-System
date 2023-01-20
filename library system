@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+</head>
+ <style>
+   h1{
+   text-align: center;
+   }
+ </style>
+<body>
+  <h1>LIBRARY MANAGEMENT SYSTEM</h1>
+  <div>
+
+     <fieldset>
+       <legend>Check Book Status</legend>
+
+       Book ISBN: <input type="text" id="number" name="number">
+        <input type="button" value="Check Status"><br><br>
+       Book Title: <input type="text" id="btitle" name="btitle">
+       Book Team Status: <select name="bookstatus" id="bookstatus" onchange="setDays()">
+                  <optgroup>
+                     <option value="Short">Short</option>
+                     <option value="Long">Long</option>
+                  </optgroup>
+                         </select> <br>
+      Days:  <input type="text" id="days" name="days" value="0"><br>
+      Total Charges: <input type="text" id="total" name="total"><br>
+      Select Student ID:  <select name="studentID" id="studentID">
+                            <optgroup>
+                              <option value="">Dennis</option>
+                              <option value="">Emmanuel</option>
+                            </optgroup>
+                          </select><br><br>
+      <input type="button" id="issueReturn" value="Issue/Return Book" onclick="calculateCharges()">
+     </fieldset>
+  </div>
+</body>
+  <script>
+ //javasript code for seting days.
+ function setDays() {
+  var days = document.getElementById("days");
+  var selectedOption = document.getElementById("bookstatus").value;
+  if (selectedOption === "Short") {
+    days.value = "3";
+  } else if (selectedOption === "Long") {
+    days.value = "7";
+  }
+}
+
+//function for returning the selected book.
+function calculateCharges() {
+  var days = document.getElementById("days").value;
+  var charges = days * 0.5;
+  document.getElementById("total").value = charges;
+}
+
+  </script>
+</html>
